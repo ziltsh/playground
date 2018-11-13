@@ -65,6 +65,8 @@ printtree:
 usage:
 	printf "\n"
 	printf "  Usage: make [-s] {default|usage}\n"
+	printf "                   {install|uninstall}\n"
+	printf "                   {printtree}\n"
 	printf "\n"
 .PHONY: usage
 
