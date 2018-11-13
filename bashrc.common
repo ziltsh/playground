@@ -1,0 +1,14 @@
+#
+# ~/.bashrc.common
+#
+
+alias wortel='sudo su -'
+
+[ -r ~/.bashrc.`hostname -s` ] && . ~/.bashsrc.`hostname -s`
+
+alias ls='ls -F'
+alias l='ls -lF'
+alias la='ls -laF'
+alias ll='ls -lAF'
+
+[ -d ~/.bashrc.d ] && for F in ~/.bashrc.d/*; do source $F; done

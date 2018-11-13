@@ -1,0 +1,23 @@
+#
+# ~/.bashrc.d/cvs
+# CVS shell environment
+# $Id$
+#
+
+# where my repository is
+# [:method:][[user][:password]@]hostname[:[port]]/path/to/repository
+#export CVSROOT=:pserver:$USER@10.116.1.30/myrelif/myrelif
+#export CVSROOT=:pserver:$USER@10.116.1.30/demo
+#export CVSROOT=:pserver:$USER@10.116.1.30/niels
+#export CVSROOT=:pserver:$USER@127.0.0.1/niels
+export CVSROOT=:pserver:$USER@127.0.0.1/testrepos
+# use ssh to get to the repository
+#export CVSROOT=:ext:$USER@10.116.1.30/testrepos
+
+# cvs over ssh
+#export CVS_RSH=/usr/bin/ssh
+
+# what editor to use with cvs
+#export EDITOR=/usr/bin/vi
+export CVSEDITOR=/usr/bin/vi
+

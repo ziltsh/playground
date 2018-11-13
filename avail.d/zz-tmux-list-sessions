@@ -1,0 +1,11 @@
+#
+# ~/.bashrc.d/tmux-list-sessions
+# $Id$
+#
+
+printf "\ntmux sessions list:\n"
+
+tmux list-sessions
+
+printf "\n"
+

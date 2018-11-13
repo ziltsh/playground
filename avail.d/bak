@@ -1,0 +1,29 @@
+#
+# ~/.bashrc.d/bak
+# $Id$
+#
+
+# Create a local backup copy of a file
+function bak () {
+	local src_file="$1"
+	local tag="${2:-bak}"
+	local timestamp="$(date '+%Y%m%dt%H%M')"
+	local dst_file="${src_file}.${tag}${timestamp}.gz"
+
+	# help
+	if [ $# -lt 1 -o $# -gt 2 -o "${src_file}" = "-h" -o "${src_file}" = "--help"  ]; then
+		printf "\n  Usage: %s <file> [<tag>]\n\n" "${FUNCNAME}"
+		return 1
+	fi
+	# sanity checks
+	if [ ! -f "${src_file}" -o ! -r "${src_file}" -o -e "${dst_file}" ]; then
+		echo $!
+		return 2
+	fi 
+
+	# da works
+	gzip -c "${src_file}" > "${dst_file}"
+	chmod 0400 "${dst_file}"
+	return $?
+}
+
