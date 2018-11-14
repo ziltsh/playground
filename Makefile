@@ -12,8 +12,8 @@ PKG     = playground
 DESTDIR = debian
 # from the environment, hopefully the users homedir
 HOMEDIR = ${DESTDIR}${HOME}
-AVAILABLE_DIR =	${DESTDIR}/${HOME}/.bashrc-avail.d
-ENABLED_DIR =		${DESTDIR}/${HOME}/.bashrc-enabled.d
+AVAILABLE_DIR =	${HOMEDIR}/.bashrc-avail.d
+ENABLED_DIR =		${HOMEDIR}/.bashrc-enabled.d
 
 default:
 	make -s usage
@@ -38,7 +38,7 @@ u: uninstall
 uninstall: uninstall_file uninstall_dir
 	make -s printtree
 uninstall_dir:
-	rmdir ${AVAILABLE_DIR}
+	-rmdir ${AVAILABLE_DIR}
 uninstall_file:
 	rm -fv ${HOMEDIR}/.bashrc.common
 	rm -fv ${AVAILABLE_DIR}/bak
@@ -57,9 +57,15 @@ install_instructions:
 	printf "\n   [ -r ~/.bashrc.common] && . ~/.bashrc.common\n\n"
 .PHONY: install_instructions
 
+uninstall_instructions:
+	printf "+ comment out in ~/.bashrc\n"
+	printf "\n#   [ -r ~/.bashrc.common] && . ~/.bashrc.common\n\n"
+.PHONY: uninstall_instructions
+
 printtree:
-	#printf "\n"
-	find ./${DESTDIR} -ls
+	printf "+ instal tree:\n"
+	#find ./${DESTDIR} -ls
+	find ./${HOMEDIR} -ls
 .PHONY: printtree
 
 usage:
